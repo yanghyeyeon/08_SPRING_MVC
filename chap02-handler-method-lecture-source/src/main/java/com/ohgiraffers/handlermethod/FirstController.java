@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Map;
 
 @Controller
@@ -170,5 +172,22 @@ public class FirstController {
         sessionStatus.setComplete();
 
         return "first/loginResult";
+    }
+
+    @GetMapping("body")
+    public void body() {}
+
+    /*
+    * @RequestBody
+    * - 해당 어노테이션은 http 본문 자체를 읽는 부분을 모델로 변환시켜주는 어노테이션
+    * */
+    @PostMapping("body")
+    public void bodyTest(@RequestBody String body,
+                         @RequestHeader("content-type")String contentType,
+                         @CookieValue(value = "JSESSIONID",required = false) String sessionId) throws UnsupportedEncodingException {
+        System.out.println("contentType = " + contentType);
+        System.out.println("sessionId = " + sessionId);
+        System.out.println("body = " + body);
+        System.out.println("body = " + URLDecoder.decode(body,"UTF-8"));
     }
 }
