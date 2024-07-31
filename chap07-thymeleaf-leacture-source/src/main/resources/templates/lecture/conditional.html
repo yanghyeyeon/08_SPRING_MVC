@@ -31,5 +31,8 @@
     <!--and나 or를 사용해서 다중 조건 처리도 가능-->
     <p th:if="${num > 0 and num <= 10}">1부터 10까지의 양수</p>
     <p th:if="${str != null or str == '바나나'}">바나나 좋아요</p>
+
+    <!--$strings라는 Utility Objects 에서 제공하는 메소드를 통해 null에 대한 처리 가능-->
+    <p th:if="${ !#strings.isEmpty(str) and str == '바나나'}">바나나 좋아요</p>
 </body>
 </html>
