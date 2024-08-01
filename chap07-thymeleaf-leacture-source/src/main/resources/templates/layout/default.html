@@ -7,6 +7,12 @@
     <title>기본페이지</title>
 </head>
 <body>
-    <header th:include="~{frgments}"
+    <div id="container">
+        <header th:include="~{fragments/header :: header}"></header>
+        <section>
+            <div layout:fragment="content"></div>
+        </section>
+        <footer th:include="~{fragments/footer :: footer}"></footer>
+    </div>
 </body>
 </html>
