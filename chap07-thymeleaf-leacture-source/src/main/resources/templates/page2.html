@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/admin}"
+>
+    <!-- 경로 복붙할때 인식 못할 수도 있으니 지우고 다시 쓸것-->
+    <style layout:fragment="style">
+        * { font-size: 40px }
+    </style>
+
+    <div layout:fragment="content">
+        <h1> page2번의 콘텐츠 입니다. </h1>
+    </div>
+
+    <script layout:fragment="script">
+        console.log("page2번의 콘텐츠 입니다")
+    </script>
+</html>
