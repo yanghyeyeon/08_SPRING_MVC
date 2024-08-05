@@ -39,7 +39,8 @@ public class WebSecurityConfig {
         http.authorizeHttpRequests((authorizationManagerRequestMatcherRegistry -> {
             authorizationManagerRequestMatcherRegistry
                     .requestMatchers("/","/index.html").permitAll() // 모두에게 허용
-                    .requestMatchers("/member/register").anonymous(); // 비인증사용자만 접근
+                    .requestMatchers("/member/register").anonymous() // 비인증사용자만 접근
+                    .anyRequest().authenticated(); // 인증된 사용자만 요청가능
         }));
 
         // formLogin 설정

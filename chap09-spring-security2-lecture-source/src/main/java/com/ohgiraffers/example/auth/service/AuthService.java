@@ -1,5 +1,6 @@
 package com.ohgiraffers.example.auth.service;
 
+import com.ohgiraffers.example.auth.principal.AuthPrincipal;
 import com.ohgiraffers.example.member.model.entity.Member;
 import com.ohgiraffers.example.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,8 @@ public class AuthService implements UserDetailsService {
         Member member = memberRepository.findMemberByMemberId(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
-        return null;
+        log.info("로그인하는 회원이름 : {}",member.getName());
+
+        return new AuthPrincipal(member);
     }
 }

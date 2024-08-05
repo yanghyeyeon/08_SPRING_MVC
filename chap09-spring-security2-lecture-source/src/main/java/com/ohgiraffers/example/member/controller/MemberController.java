@@ -24,10 +24,10 @@ public class MemberController {
     @PostMapping("/register")
     public String register(SignupDTO signupDTO) {
 
-        log.info("signup : {}", signupDTO);
+        log.info("🎁signup : {}", signupDTO);
 
         memberService.register(signupDTO);
 
-        return "/";
+        return "redirect:/";
     }
 }

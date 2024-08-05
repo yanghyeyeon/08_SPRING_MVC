@@ -24,7 +24,7 @@ public class AuthPrincipal implements UserDetails, Serializable {
 
         auth.add(new SimpleGrantedAuthority("ROLE_" + member.getRole()));
 
-        return List.of();
+        return auth;
     }
 
     @Override
@@ -35,5 +35,29 @@ public class AuthPrincipal implements UserDetails, Serializable {
     @Override
     public String getUsername() {
         return member.getMemberId();
+    }
+
+    // 계정 만료 여부
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    // 계정 잠김 여부
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    // 자격증명 만료 여부
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    // 계정 활성화 여부
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
